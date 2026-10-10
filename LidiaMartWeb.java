@@ -41,7 +41,11 @@ public class LidiaMartWeb {
         }
 
         HttpServer server = HttpServer.create(
-                new InetSocketAddress(8080), 0);
+                new InetSocketAddress(
+    Integer.parseInt(System.getenv().getOrDefault("PORT", "8080"))
+),
+0
+        );
 
         server.createContext("/", LidiaMartWeb::homePage);
         server.createContext("/login", LidiaMartWeb::login);
